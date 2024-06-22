@@ -4,9 +4,8 @@ body{
 p{
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     margin: auto;
-    width: 600px;
+    width: 640px;
 }
 span{
     display: flex;

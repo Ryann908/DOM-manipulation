@@ -1,5 +1,4 @@
-let width = 16;
-let height = 16;
+let pSize = 16;
 const green = document.getElementById("Green");
 const red = document.getElementById("Red");
 const yellow = document.getElementById("Yellow");
@@ -9,19 +8,24 @@ const rst = document.getElementById("rst");
 
 
 
+function calc(pSize){
+    return String(640/pSize)-3 + "px";
+}
 
 
 
 
-
-for(i = 1; i <= width * height; i++) {
+for(let i = 0; i < pSize; i++) {
+    for(let j = 0; j < pSize; j++){
     const para = document.querySelector("p");
     const div = document.createElement("div");
     para.appendChild(div);
-    div.style.padding = "12px";
+
+    div.style.width = calc(pSize);
+    div.style.height = calc(pSize);
     div.style.border = "black solid 1px";  
     green.addEventListener('click', () => {
-    div.addEventListener('dragover', () => {
+        div.addEventListener('dragover', () => {
             div.style.background = "green";
         });
     });
@@ -51,13 +55,15 @@ for(i = 1; i <= width * height; i++) {
 
          function size(){
             let sizeL = prompt("Type one number");
-            let sizeS = prompt("Type one number");
-            let sizeN = sizeL * sizeS;
-                for(i = 1; i <= sizeN; i++) {
+                for(i = 0; i < sizeL; i++) {
+                    for(j = 0; j < sizeL; j++){
+                    
                     const para = document.querySelector("p");
                     const div = document.createElement("div");
                     para.appendChild(div);
-                    div.style.padding = "12px";
+
+                    div.style.width = calc(sizeL);
+                    div.style.height = calc(sizeL);
                     div.style.border = "black solid 1px";  
                     green.addEventListener('click', () => {
                     div.addEventListener('dragover', () => {
@@ -83,11 +89,16 @@ for(i = 1; i <= width * height; i++) {
                         div.addEventListener('dragover', () => {
                                 div.style.background = "black";
                             });
-                        });                       
-                }    
+                        });
+                        rst.addEventListener('click', () => {
+                            para.removeChild(div);
+                         })                       
+                }  
+  
         }
+    }
              
-                   
+    }            
 }
 
 
